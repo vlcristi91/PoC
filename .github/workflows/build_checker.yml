@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -28,7 +28,7 @@ jobs:
           git pull origin development
 
       - name: Cache APT Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt
           key: ${{ runner.os }}-apt-cache
@@ -47,7 +47,7 @@ jobs:
           make
 
       - name: Upload MCU Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mcu_build
           path: src/backend/mcu/build  # Adjust path if needed
@@ -56,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -68,7 +68,7 @@ jobs:
           git pull origin development
 
       - name: Cache APT Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt
           key: ${{ runner.os }}-apt-cache
@@ -87,7 +87,7 @@ jobs:
           make
 
       - name: Upload Battery Module Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: battery_module_build
           path: src/backend/ecu_simulation/BatteryModule/build
@@ -96,7 +96,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -108,7 +108,7 @@ jobs:
           git pull origin development
 
       - name: Cache APT Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt
           key: ${{ runner.os }}-apt-cache
@@ -127,7 +127,7 @@ jobs:
           make
 
       - name: Upload Doors Module Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: doors_module_build
           path: src/backend/ecu_simulation/DoorsModule/build
@@ -136,7 +136,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -148,7 +148,7 @@ jobs:
           git pull origin development
 
       - name: Cache APT Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt
           key: ${{ runner.os }}-apt-cache
@@ -167,7 +167,7 @@ jobs:
           make
 
       - name: Upload Engine Module Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: engine_module_build
           path: src/backend/ecu_simulation/EngineModule/build
@@ -176,7 +176,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: true
           fetch-depth: 0
@@ -188,7 +188,7 @@ jobs:
           git pull origin development
 
       - name: Cache APT Dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: /var/cache/apt
           key: ${{ runner.os }}-apt-cache
@@ -207,7 +207,7 @@ jobs:
           make
 
       - name: Upload HVAC Module Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: hvac_module_build
           path: src/backend/ecu_simulation/HVACModule/build
@@ -217,7 +217,7 @@ jobs:
     needs: [mcu_build, battery_module_build, doors_module_build, engine_module_build, hvac_module_build]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Check Build Results
         run: echo "All modules built successfully."
